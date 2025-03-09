@@ -94,8 +94,12 @@ for (let submission of submissions) {                          ///3///
    let assignmentId = submission.assignment_id;
    let submittedScore = submission.submission.score;
    let assignment = assignments[assignmentId]; 
+
+   let dueAt = new Date(assignment.due_at);
+   let maxPoints = assignment.points_possible;
   
 }
+
 
 ///////RETURN VALUE- WHEN WE RUN THE FUNCTION- IT SHOULD GIVE THIS RESULTS- BREAKOUT WITH OBJECTS//////////
 
