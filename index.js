@@ -77,55 +77,58 @@ const CourseInfo = {
 
 ];
 
-function getLearnerData(course, ag, submissions) {
-
-//remove assignment 3 from the results//
-AssignmentGroup.assignments = AssignmentGroup.assignments.filter(assignment => assignment.id !== 3);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-console.log(AssignmentGroup.assignments);  //first console log, remove assignment 3//
-
-
-
-
-
-
-
-
-
-
-
-
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+function getLearnerData(course, ag, submissions) {    /////DECLARING THE FUNCTION/////
+let learners = {}   ///empty box to load learners info//
+////////////////INFO TO RUN THE FUNCITION- PRAMATERS /////////////////////////////
+let assignments = {};    //empty box to load assignments info//
+for (let assignments of ag.assignments) {
+     assignments[assignments.id] = assignments;
 }
+
+
+
+///////RETURN VALUE- WHEN WE RUN THE FUNCTION- IT SHOULD GIVE THIS RESULTS- BREAKOUT WITH OBJECTS//////////
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////OUTPUT//////////////////////////////////  
+}
+
+const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
+
+console.log(result);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //   const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
 
 //   console.log(result);
