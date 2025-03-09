@@ -82,8 +82,8 @@ function getLearnerData(course, ag, submissions) {    /////DECLARING THE FUNCTIO
 let learners = {}   ///empty box to load learners info//
 ////////////////INFO TO RUN THE FUNCITION- PRAMATERS /////////////////////////////
 let assignments = {};    //empty box to load assignments info//
-for (let assignments of ag.assignments) {
-     assignments[assignments.id] = assignments;
+for (let assignment of ag.assignments) {
+     assignments[assignment.id] = assignment;
 }
 
 
