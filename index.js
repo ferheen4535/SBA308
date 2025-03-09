@@ -95,10 +95,37 @@ for (let submission of submissions) {                          ///3///
    let submittedScore = submission.submission.score;
    let assignment = assignments[assignmentId]; 
 
+
    let dueAt = new Date(assignment.due_at);
    let maxPoints = assignment.points_possible;
+   return{dueAt, maxPoints};
+  }
+
+   let latePenalty = 0; 
+   if (submittedAt > dueAt) {
+       latePenalty = maxPoints * 0.1; 
+
+       
+   }
   
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ///////RETURN VALUE- WHEN WE RUN THE FUNCTION- IT SHOULD GIVE THIS RESULTS- BREAKOUT WITH OBJECTS//////////
@@ -150,7 +177,7 @@ console.log(result);
 
 
 
-
+///https://www.youtube.com/watch?v=ifi6dXOl3g4//
 
 
 
