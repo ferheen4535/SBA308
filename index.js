@@ -98,16 +98,27 @@ for (let submission of submissions) {                          ///3///
 
    let dueAt = new Date(assignment.due_at);
    let maxPoints = assignment.points_possible;
-   return{dueAt, maxPoints};
+   return{dueAt, maxPoints};                 
   }
 
    let latePenalty = 0; 
    if (submittedAt > dueAt) {
        latePenalty = maxPoints * 0.1; 
 
-       
    }
-  
+
+   let finalScore = Math.max(0, submittedScore - latePenalty);
+   let avgScore = FinalScore / maxPoints;
+
+
+  if (learners) {
+      learners = {id: learnerId, totalScore: 0, totalMax: 0};   ///get learners: id with average for assignment/////
+     return{learners}
+  }
+
+
+
+
 
 
 
