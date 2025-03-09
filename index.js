@@ -78,15 +78,24 @@ const CourseInfo = {
 ];
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-function getLearnerData(course, ag, submissions) {    /////DECLARING THE FUNCTION/////
+function getLearnerData(course, ag, submissions) {    /////DECLARING THE FUNCTION///// 
+  /// course = 1,  ag = 2 , submissions = 3////
 let learners = {}   ///empty box to load learners info//
 ////////////////INFO TO RUN THE FUNCITION- PRAMATERS /////////////////////////////
 let assignments = {};    //empty box to load assignments info//
-for (let assignment of ag.assignments) {
+for (let assignment of ag.assignments) {                      ///2///
      assignments[assignment.id] = assignment;
 }
 
+    ////LOOP THROUGH EACH SUBMISSION///
 
+for (let submission of submissions) {                          ///3///
+   let learnerId = submission.learner_id;
+   let assignmentId = submission.assignment_id;
+   let submittedScore = submission.submission.score;
+   let assignment = assignments[assignmentId]; 
+  
+}
 
 ///////RETURN VALUE- WHEN WE RUN THE FUNCTION- IT SHOULD GIVE THIS RESULTS- BREAKOUT WITH OBJECTS//////////
 
