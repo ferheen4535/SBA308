@@ -80,47 +80,66 @@ const CourseInfo = {
 
 
 
-function getLearnerData(course, ag, submissions)  {  /////DECLARING THE FUNCTION///// 
-  /// course = 1,  ag = 2 , submissions = 3////
+  function getLearnerData(course, ag, submissions) {                      ////function given////
+    let learners = {};                                                  ////empty box for info/////
+  
+   for (const assignment of ag.assignments) 
+    {                                                ///loop through assigments to get assigments submitted///                       
+  const mainSubmissions = submissions.filter(sub => sub.assignment_id === assignment.id);          ///filter through assigments to find submitted with id //
+      
+   for (const submission of mainSubmissions) 
+    {                                                      //loop through Main submissions to find the ones submitted//      
+   if (!learners[submission.learner_id]) {                                                           //check if there are learner that do not exist///
+   learners[submission.learner_id] = { id: submission.learner_id, totalScore: 0, totalPoints: 0}; 
+    }
+  
+  let score = submission.submission.score;                                //access scores in submission//
+  const isLate = new Date(submission.submission.submitted_at) > new Date(assignment.due_at);  //for late assignments//
+    // return(score)
+  if (isLate)                                                                 
+    {
+  score *= 0.9; // Deduct 10% for late submission                                   //calculate late asssignments//
+   }
+  // return(learners)
 
-  let learners = {},    ////empty box for results//
+   learners[submission.learner_id][assignment.id] = score / assignment.points_possible;         // calculate scores///
+    learners[submission.learner_id].totalScore += score;                                           
+    learners[submission.learner_id].totalPoints += assignment.points_possible;
 
-for (const assignment of ag.assignments) {
-const mainSubmissions = submissions.filter (sub => sub.assignment_id === assignment.id);   ///using the filter method///
+    // return(submission)
+    
+   }
+   }
 
-for (const submission of mainSubmissions) {
-if (!learners[submission.learner_id]) {
-learners[submission.learner_id]; {
-  learners[submission.learner_id] = { id: submission.learner_id, totalScore: 0, totalPoints: 0};
-}
- let score = submission.submission.score;
- const isLate = new Date(submission.submission.submitted_at) > new Date(assignment.due_at);
-
- if (isLate) { 
-  score * = 0.9;
-
- }
- learners[submission.learner_id] [assignment.id] = score / assignment.points_possible;
- learners[submission.learner_id].totalScore += score;
- learners[submission.learner_id].totalPoints += assignment.points_possible;
-}
-}
-}
-
-return Object.values(learners).map(learner => {
-learner.avg = learner.totalScore/ learner.totalPoints;
-delete learner.totalScore;
-delete learner.totalPoints;
-return learner;
-
-});
-}
-
+  return Object.values(learners).map(learner =>                     ///convert learners objects into an array and loop///
+    
+    {
+   learner.avg = learner.totalScore / learner.totalPoints;          ////calculate average///
+  return learner;
+  });
+  }
 
 
 ///////RETURN VALUE- WHEN WE RUN THE FUN
 ////////////////////////OUTPUT//////////////////////////////////  
 
-
 const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
 console.log(result);
+
+
+
+
+
+
+
+
+
+// ///SOURCES/////
+// //TURTORING SESSION WITH JABEEN KHAN///
+// https://www.youtube.com/watch?v=brQhuxmd-R4
+// https://youtu.be/q-lUgFxwjEM?si=5tywJG3HLEAKebaK
+// https://youtu.be/ifi6dXOl3g4?si=7A4U1jqseLtBCbVB
+// https://youtu.be/ujlnQfd1ams?si=EOHsxbb5NpcV49tg
+// https://youtu.be/ujlnQfd1ams?si=h5mC6KHzbKfk1i1Q
+// https://youtu.be/Y8sMnRQYr3c?si=pkPjkv4Nh3_JVvhL
+// https://youtu.be/FioqUnOGlq8?si=EOVnZ3ERAC3ZhjB5
