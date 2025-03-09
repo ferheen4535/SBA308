@@ -83,6 +83,7 @@ const CourseInfo = {
   function getLearnerData(course, ag, submissions) {                      ////function given////
     let learners = {};                                                  ////empty box for info/////
   
+    try{
    for (const assignment of ag.assignments) 
     {                                                ///loop through assigments to get assigments submitted///                       
   const mainSubmissions = submissions.filter(sub => sub.assignment_id === assignment.id);          ///filter through assigments to find submitted with id //
@@ -90,7 +91,7 @@ const CourseInfo = {
    for (const submission of mainSubmissions) 
     {                                                      //loop through Main submissions to find the ones submitted//      
    if (!learners[submission.learner_id]) {                                                           //check if there are learner that do not exist///
-   learners[submission.learner_id] = { id: submission.learner_id, totalScore: 0, totalPoints: 0}; 
+   learners[submission.learner_id] = { id: submission.learner_id, totalScore: 0, totalPoints: 0};        //switch statements///
     }
   
   let score = submission.submission.score;                                //access scores in submission//
@@ -114,9 +115,19 @@ const CourseInfo = {
   return Object.values(learners).map(learner =>                     ///convert learners objects into an array and loop///
     
     {
-   learner.avg = learner.totalScore / learner.totalPoints;          ////calculate average///
+   learner.avg = learner.totalScore / learner.totalPoints;   
+          ////calculate average///
+          delete learner.totalPoints;       ///not needed//
+          delete learner.totalScore;      //not needed//
+        
   return learner;
+
+  
   });
+} catch (error) {                               //try/catch statement////
+  console.error("Error");
+  return[];
+}
   }
 
 
@@ -135,7 +146,7 @@ console.log(result);
 
 
 // ///SOURCES/////
-// //TURTORING SESSION WITH JABEEN KHAN///
+// //30 min TURTORING SESSION WITH JABEEN KHAN///
 // https://www.youtube.com/watch?v=brQhuxmd-R4
 // https://youtu.be/q-lUgFxwjEM?si=5tywJG3HLEAKebaK
 // https://youtu.be/ifi6dXOl3g4?si=7A4U1jqseLtBCbVB
