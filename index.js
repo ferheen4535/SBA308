@@ -157,3 +157,5 @@ console.log(result);
 // https://youtu.be/ujlnQfd1ams?si=h5mC6KHzbKfk1i1Q
 // https://youtu.be/Y8sMnRQYr3c?si=pkPjkv4Nh3_JVvhL
 // https://youtu.be/FioqUnOGlq8?si=EOVnZ3ERAC3ZhjB5
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+https://www.youtube.com/watch?v=FFas8cMHVwg
