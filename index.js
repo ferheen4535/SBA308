@@ -82,6 +82,8 @@ const CourseInfo = {
 
   function getLearnerData(course, ag, submissions) {                      ////function given////
     let learners = {};                                                  ////empty box for info/////
+
+    ag.assignments.splice(ag.assignments.findIndex(a => a.id ===3), 1);  ////remove assignment 3///
   
     try{
    for (const assignment of ag.assignments) 
@@ -128,11 +130,12 @@ const CourseInfo = {
   console.error("Error");
   return[];
 }
+
   }
 
 
-///////RETURN VALUE- WHEN WE RUN THE FUN
-////////////////////////OUTPUT//////////////////////////////////  
+///////RETURN VALUE- WHEN WE RUN TdHE FUN
+////////////////////////OUTPUT//////////////////////////////////  .
 
 const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
 console.log(result);
