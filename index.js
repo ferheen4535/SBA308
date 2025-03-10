@@ -77,7 +77,7 @@ const CourseInfo = {
 
 ];
 
-
+///////////////////////CODE///////////////
 
 
   function getLearnerData(course, ag, submissions) {                      ////function given////
@@ -86,23 +86,23 @@ const CourseInfo = {
     ag.assignments.splice(ag.assignments.findIndex(a => a.id ===3), 1);  ////remove assignment 3///
   
     try{
-   for (const assignment of ag.assignments) 
+    for (const assignment of ag.assignments) 
     {                                                ///loop through assigments to get assigments submitted///                       
-  const mainSubmissions = submissions.filter(sub => sub.assignment_id === assignment.id);          ///filter through assigments to find submitted with id //
+      const mainSubmissions = submissions.filter(sub => sub.assignment_id === assignment.id);          ///filter through assigments to find submitted with id //
       
-   for (const submission of mainSubmissions) 
+    for (const submission of mainSubmissions) 
     {                                                      //loop through Main submissions to find the ones submitted//      
-   if (!learners[submission.learner_id]) {                                                           //check if there are learner that do not exist///
-   learners[submission.learner_id] = { id: submission.learner_id, totalScore: 0, totalPoints: 0};        //switch statements///
+     if (!learners[submission.learner_id]) {                                                           //check if there are learner that do not exist///
+    learners[submission.learner_id] = { id: submission.learner_id, totalScore: 0, totalPoints: 0};        //switch statements///
     }
   
-  let score = submission.submission.score;                                //access scores in submission//
-  const isLate = new Date(submission.submission.submitted_at) > new Date(assignment.due_at);  //for late assignments//
+    let score = submission.submission.score;                                //access scores in submission//
+    const isLate = new Date(submission.submission.submitted_at) > new Date(assignment.due_at);  //for late assignments//
     // return(score)
-  if (isLate)                                                                 
+    if (isLate)                                                                 
     {
-  score *= 0.9; // Deduct 10% for late submission                                   //calculate late asssignments//
-   }
+    score *= 0.9; // Deduct 10% for late submission                                   //calculate late asssignments//
+     }
   // return(learners)
 
    learners[submission.learner_id][assignment.id] = score / assignment.points_possible;         // calculate scores///
@@ -114,7 +114,7 @@ const CourseInfo = {
    }
    }
 
-  return Object.values(learners).map(learner =>                     ///convert learners objects into an array and loop///
+    return Object.values(learners).map(learner =>                     ///convert learners objects into an array and loop///
     
     {
    learner.avg = learner.totalScore / learner.totalPoints;   
@@ -158,4 +158,4 @@ console.log(result);
 // https://youtu.be/Y8sMnRQYr3c?si=pkPjkv4Nh3_JVvhL
 // https://youtu.be/FioqUnOGlq8?si=EOVnZ3ERAC3ZhjB5
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
-https://www.youtube.com/watch?v=FFas8cMHVwg
+// https://www.youtube.com/watch?v=FFas8cMHVwg
